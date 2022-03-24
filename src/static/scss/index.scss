@@ -1,0 +1,16 @@
+// https://colorhunt.co/palettes/dark
+
+@import "~bootstrap/scss/bootstrap";
+
+body {
+  height: 100vh;
+  background-color: #121212;
+}
+
+input {
+  &.form-control {
+    background-color: #525252;
+    border: 1px solid #414141;
+    color: white;
+  }
+}
