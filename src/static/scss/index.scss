@@ -1,16 +1,47 @@
 // https://colorhunt.co/palettes/dark
 
 @import "~bootstrap/scss/bootstrap";
+@import "variables";
 
 body {
   height: 100vh;
-  background-color: #121212;
+  background-color: $black-2;
+  color: white;
 }
 
 input {
-  &.form-control {
-    background-color: #525252;
-    border: 1px solid #414141;
+  &.form-control,
+  &.form-control[readonly] {
+    background-color: $gray-2;
+    border: 1px solid $gray-1;
     color: white;
+
+    &:focus,
+    &:disabled {
+      background-color: $gray-2;
+      border: 1px solid $gray-1;
+      color: white;
+      outline: none !important;
+      box-shadow: none !important;
+    }
+  }
+}
+
+.input-section {
+  font-size: 12px;
+
+  input {
+    &.form-control {
+      font-size: 12px;
+    }
+  }
+}
+
+.terminal-section {
+  .terminal {
+    width: 100%;
+    overflow-y: scroll;
+    background-color: $gray-2;
+    border: 1px solid $gray-1;
   }
 }
