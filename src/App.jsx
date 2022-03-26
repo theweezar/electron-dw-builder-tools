@@ -125,6 +125,10 @@ function ActionModal() {
 }
 
 function InputResource() {
+  const onBrowseDWFile = () => {
+
+  }
+
   return (
     <div className="input-section">
       <div className="form-group">
@@ -155,7 +159,7 @@ function InputResource() {
             <input type="text" id="dw-file" className="form-control" aria-label="DW file JSON" disabled />
           </div>
           <div className="col-12 col-md-3 mt-2 mt-md-0">
-            <button className="btn w-100">Browse File</button>
+            <button className="btn w-100" onClick={onBrowseDWFile}>Browse File</button>
           </div>
         </div>
 

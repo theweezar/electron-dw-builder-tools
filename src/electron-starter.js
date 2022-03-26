@@ -12,6 +12,29 @@ const url = require('url');
 // be closed automatically when the JavaScript object is garbage collected.
 let mainWindow;
 
+const template = [
+  {
+    label: 'Edit',
+    submenu: [
+      { role: 'cut' },
+      { role: 'copy' },
+      { role: 'paste' },
+      { role: 'selectall' }
+    ]
+  },
+  {
+    label: 'View',
+    submenu: [
+      { role: 'reload' },
+      { role: 'forcereload' },
+      { role: 'toggledevtools' }
+    ]
+  }
+];
+
+const menu = electron.Menu.buildFromTemplate(template);
+electron.Menu.setApplicationMenu(menu);
+
 function createWindow() {
   // Create the browser window.
   mainWindow = new BrowserWindow({
