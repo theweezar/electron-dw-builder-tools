@@ -1,8 +1,7 @@
 const path = require('path');
-const isDev = require('electron-is-dev');
 
 module.exports = {
-  mode: isDev ? 'development' : 'production',
+  mode: process.env.ELECTRON_START_URL ? 'development' : 'production',
   entry: './src/App.scss',
   output: {
     filename: 'bundle.css',

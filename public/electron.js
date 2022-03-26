@@ -1,5 +1,4 @@
 const electron = require('electron');
-const isDev = require('electron-is-dev');
 // Module to control application life.
 const app = electron.app;
 // Module to create native browser window.
@@ -47,9 +46,8 @@ function createWindow() {
 
   // and load the index.html of the app.
   mainWindow.loadURL(
-    isDev
-      ? 'http://localhost:3000'
-      : url.format(
+    process.env.ELECTRON_START_URL || 
+      url.format(
         {
           pathname: path.join(__dirname, '/../build/index.html'),
           protocol: 'file:',

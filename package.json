@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "description": "An App to build resource for demandware cloud",
+  "homepage": "./",
   "author": {
     "email": "minhducducminh1999@gmail.com",
     "name": "DucHoang"
@@ -13,6 +14,7 @@
     "@testing-library/react": "^12.1.4",
     "@testing-library/user-event": "^13.5.0",
     "bootstrap": "^5.1.3",
+    "electron-is-dev": "^2.0.0",
     "react": "^17.0.2",
     "react-bootstrap": "^2.2.2",
     "react-dom": "^17.0.2",
@@ -23,22 +25,29 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "set ELECTRON_START_URL=http://localhost:3000 && react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "dev": "concurrently -k \"npm start\" \"npm run electron\"",
+    "dev": "concurrently -k \"set ELECTRON_START_URL=http://localhost:3000 && BROWSER=none && npm start\" \"set ELECTRON_START_URL=http://localhost:3000 && npm run electron\"",
     "electron": "wait-on tcp:3000 && electron .",
     "pack": "electron-builder --dir",
-    "dist": "electron-builder"
+    "dist": "npm run build && electron-builder"
   },
+  "main": "public/electron.js",
   "build": {
-    "appId": "your.id",
+    "appId": "This.is.my.app.id",
     "win": {
       "target": "nsis",
-      "icon": "build-resources/electron-icon.png"
+      "icon": "assets/electron-icon.png"
     },
-    "extends": null
+    "files": [
+      "build/**/*",
+      "node_modules/**/*"
+    ],
+    "directories": {
+      "buildResources": "assets"
+    }
   },
   "eslintConfig": {
     "extends": [
@@ -62,11 +71,9 @@
     "concurrently": "^7.0.0",
     "electron": "^17.2.0",
     "electron-builder": "^22.14.13",
-    "electron-is-dev": "^2.0.0",
     "precss": "^4.0.0",
     "sass": "^1.49.9",
     "sass-loader": "^12.6.0",
     "wait-on": "^6.0.1"
-  },
-  "main": "src/electron-starter.js"
+  }
 }
