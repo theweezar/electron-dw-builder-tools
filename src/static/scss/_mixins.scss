@@ -1,0 +1,5 @@
+@mixin flex($width-percent) {
+  flex: 0 0 $width-percent;
+  max-width: $width-percent;
+  -ms-flex: 0 0 $width-percent;
+}

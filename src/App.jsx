@@ -76,21 +76,91 @@ function ActionModal() {
         Action
       </button>
 
-      <Modal show={show} onHide={handleClose}>
+      <Modal show={show} onHide={handleClose} size="lg">
         <Modal.Header closeButton>
-          <Modal.Title>Modal heading</Modal.Title>
+          <Modal.Title>Action</Modal.Title>
         </Modal.Header>
-        <Modal.Body>Woohoo, you're reading this text in a modal!</Modal.Body>
-        <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
-            Close
-          </Button>
-          <Button variant="primary" onClick={handleClose}>
-            Save Changes
-          </Button>
+        <Modal.Body>
+          <div className="row">
+            <div className="col-12 col-md-2">
+              <p>Command</p>
+            </div>
+            <div className="col-12 col-md-10">
+              <div className="command-container">
+                <div className="command-inject px-1" contentEditable={true}></div>
+              </div>
+            </div>
+          </div>
+        </Modal.Body>
+        <Modal.Footer className="justify-content-center">
+          <div className="btn-action-container px-1 mb-1 mb-lg-0">
+            <button className="btn w-100" >
+              Build JS
+            </button>
+          </div>
+          <div className="btn-action-container px-1 mb-1 mb-lg-0">
+            <button className="btn w-100" >
+              Build SCSS
+            </button>
+          </div>
+          <div className="btn-action-container px-1 mb-1 mb-lg-0">
+            <button className="btn w-100" >
+              Build both
+            </button>
+          </div>
+          <div className="btn-action-container px-1 mb-1 mb-lg-0">
+            <button className="btn w-100" >
+              Re-install
+            </button>
+          </div>
+          <div className="btn-action-container px-1 mb-1 mb-lg-0">
+            <button className="btn w-100" >
+              Run command
+            </button>
+          </div>
         </Modal.Footer>
       </Modal>
     </>
+  );
+}
+
+function InputResource() {
+  return (
+    <div className="input-section">
+      <div className="form-group">
+        <label htmlFor="work-dir">
+          <div className="d-flex align-items-center">
+            <GoFileDirectory />
+            <div className="ms-2">Work Directory</div>
+          </div>
+        </label>
+        <div className="row mt-2">
+          <div className="col-12 col-md-9">
+            <input type="text" id="work-dir" className="form-control" aria-label="Work Directory" disabled />
+          </div>
+          <div className="col-12 col-md-3 mt-2 mt-md-0">
+            <button className="btn w-100">Open Folder</button>
+          </div>
+        </div>
+      </div>
+      <div className="form-group mt-3">
+        <label htmlFor="work-dir">
+          <div className="d-flex align-items-center">
+            <FaFile />
+            <div className="ms-2">DW File</div>
+          </div>
+        </label>
+        <div className="row mt-2">
+          <div className="col-12 col-md-9">
+            <input type="text" id="dw-file" className="form-control" aria-label="DW file JSON" disabled />
+          </div>
+          <div className="col-12 col-md-3 mt-2 mt-md-0">
+            <button className="btn w-100">Browse File</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
   );
 }
 
@@ -101,26 +171,7 @@ function App() {
         {/* Left section */}
         <div className="col-9">
           <div className="p-4 pe-2">
-            <div className="input-section">
-              <div className="form-group">
-                <label htmlFor="work-dir">
-                  <div className="d-flex align-items-center">
-                    <GoFileDirectory />
-                    <div className="ms-2">Work Directory</div>
-                  </div>
-                </label>
-                <input type="text" id="work-dir" className="form-control mt-2" aria-label="Work Directory" disabled />
-              </div>
-              <div className="form-group mt-3">
-                <label htmlFor="work-dir">
-                  <div className="d-flex align-items-center">
-                    <FaFile />
-                    <div className="ms-2">DW File</div>
-                  </div>
-                </label>
-                <input type="text" id="dw-file" className="form-control mt-2" aria-label="DW file JSON" disabled />
-              </div>
-            </div>
+            <InputResource />
             <Terminal />
           </div>
         </div>
