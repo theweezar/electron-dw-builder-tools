@@ -29,7 +29,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "dev": "concurrently -k \"set ELECTRON_START_URL=http://localhost:3000 && BROWSER=none && npm start\" \"set ELECTRON_START_URL=http://localhost:3000 && npm run electron\"",
+    "dev": "concurrently -k \"set ELECTRON_START_URL=http://localhost:3000 && npm start\" \"set ELECTRON_START_URL=http://localhost:3000 && npm run electron\"",
     "electron": "wait-on tcp:3000 && electron .",
     "pack": "electron-builder --dir",
     "dist": "npm run build && electron-builder"
@@ -68,6 +68,7 @@
     ]
   },
   "devDependencies": {
+    "babel-loader": "^8.2.4",
     "concurrently": "^7.0.0",
     "electron": "^17.2.0",
     "electron-builder": "^22.14.13",
@@ -75,5 +76,10 @@
     "sass": "^1.49.9",
     "sass-loader": "^12.6.0",
     "wait-on": "^6.0.1"
+  },
+  "browser": {
+    "fs": false,
+    "path": false,
+    "os": false
   }
 }
